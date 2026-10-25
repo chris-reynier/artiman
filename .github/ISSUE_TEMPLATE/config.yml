@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question ou aide à l'utilisation
+    url: https://github.com/chris-reynier/artiman/discussions
+    about: Posez vos questions dans les Discussions, la communauté et l'auteur y répondent.

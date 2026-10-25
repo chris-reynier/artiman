@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArtiMan – Mode d'emploi</title>
+<style>
+  body { margin: 0; background: #f4f3ef; color: #17171a; font: 15px/1.55 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 820px; margin: 0 auto; padding: 28px 20px 60px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 30px 0 8px; padding-top: 10px; border-top: 1px solid #dcdad3; }
+  h3 { font-size: 16px; margin: 18px 0 6px; }
+  .sub { color: #55544f; margin: 0 0 18px; }
+  .box { background: #fff; border: 1px solid #dcdad3; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+  .warn { background: #fff3d6; border-color: #f0d38a; }
+  .ok { background: #e5f5ec; border-color: #a9dcbd; }
+  ol li, ul li { margin: 4px 0; }
+  kbd { background: #fff; border: 1px solid #ccc; border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 13px; }
+  code { background: #eceae4; border-radius: 4px; padding: 0 4px; }
+  table { border-collapse: collapse; width: 100%; background: #fff; }
+  td, th { border: 1px solid #dcdad3; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #f0efea; }
+  @media print { body { background: #fff; } .box { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<h1>ArtiMan – Mode d'emploi</h1>
+<p class="sub">Devis et factures pour artisans, sur votre PC. Gratuit, sans abonnement, sans Internet. Windows 10 et 11.</p>
+
+<div class="box ok"><b>En bref :</b> dézippez le dossier <code>ArtiMan</code> dans <code>Documents</code>, double-cliquez sur <code>ArtiMan.exe</code>,
+remplissez l'assistant de démarrage. Pour essayer d'abord sans rien saisir, double-cliquez sur <code>Essayer la demo.cmd</code>.</div>
+
+<h2>1. Installation</h2>
+<ol>
+  <li>Faites un clic droit sur le fichier <code>ArtiMan-x.y.z.zip</code> → <b>Extraire tout…</b></li>
+  <li>Choisissez un dossier <b>à vous</b>, par exemple <code>Documents</code> ou <code>C:\ArtiMan</code>.
+    <br><i>N'utilisez pas « C:\Program Files » : ArtiMan doit pouvoir écrire ses données à côté de lui.</i></li>
+  <li>Ouvrez le dossier <code>ArtiMan</code> et double-cliquez sur <b>ArtiMan.exe</b>.</li>
+  <li>Pour l'avoir sur le bureau : clic droit sur <code>ArtiMan.exe</code> → <b>Afficher d'autres options</b> → <b>Envoyer vers</b> → <b>Bureau (créer un raccourci)</b>.</li>
+</ol>
+<div class="box warn"><b>Premier lancement :</b> Windows peut afficher « Windows a protégé votre ordinateur ». C'est normal pour un programme
+gratuit non signé. Cliquez sur <b>Informations complémentaires</b> puis <b>Exécuter quand même</b>. Cela ne se produit qu'une fois.</div>
+
+<h2>2. Découvrir avec la démo</h2>
+<p>Double-cliquez sur <b>Essayer la demo.cmd</b> : ArtiMan s'ouvre avec une entreprise, des clients, des devis et des factures
+<b>fictifs</b>. Un bandeau jaune « DÉMONSTRATION » le rappelle. Tout ce que vous faites en démo reste dans le dossier
+<code>demo-data</code> et ne touche jamais vos vraies données. Pour repartir d'une démo neuve, supprimez le dossier <code>demo-data</code>.</p>
+
+<h2>3. Le premier lancement : l'assistant</h2>
+<p>Au premier lancement de <code>ArtiMan.exe</code>, un assistant vous demande :</p>
+<ul>
+  <li><b>votre entreprise</b> : nom, adresse, téléphone, SIRET, code APE, et votre logo si vous en avez un (sinon, le nom s'imprime en en-tête) ;</li>
+  <li><b>votre régime de TVA</b> : vous facturez la TVA, ou vous êtes en <b>franchise</b> (micro-entreprise : « TVA non applicable, art. 293 B du CGI ») ;</li>
+  <li><b>votre assurance décennale</b>, obligatoire sur les documents des artisans du bâtiment ;</li>
+  <li><b>la numérotation</b> : première facture n°0001, ou la suite de vos factures existantes (la loi impose une numérotation sans trou) ;</li>
+  <li><b>un dossier de sauvegarde externe</b> (clé USB ou OneDrive), conseillé.</li>
+</ul>
+<p>Tout reste modifiable dans <b>Paramètres</b>. Vérifiez aussi les textes proposés pour le délai de paiement et les pénalités de retard
+(au besoin avec votre comptable), puis cochez <b>Mentions vérifiées</b>.</p>
+
+<h3>Reprendre vos clients</h3>
+<p>Si vos clients sont dans un tableau Excel, enregistrez-le en <b>CSV (séparateur : point-virgule)</b>, puis dans <b>Clients</b>,
+cliquez sur <b>Importer (CSV)</b>. La première ligne doit contenir les titres des colonnes : <i>Nom, Prénom, Civilité, Adresse, Code postal,
+Ville, Téléphone, Portable, Email</i>. Les clients déjà présents ne sont pas importés deux fois.</p>
+
+<h2>4. Le travail de tous les jours</h2>
+<h3>Faire un devis</h3>
+<ol>
+  <li>Cliquez sur <b>+ Nouveau devis</b> et choisissez le client (ou <b>+ Nouveau client</b>).</li>
+  <li>Saisissez les lignes : <b>désignation</b> (ex. MURS SALON), <b>quantité</b>, <b>unité</b>, <b>prix unitaire</b>, <b>TVA</b>, puis la <b>description</b> en dessous.</li>
+  <li>Au clavier : <kbd>Entrée</kbd> passe au champ suivant, <kbd>Ctrl</kbd>+<kbd>Entrée</kbd> ajoute une nouvelle ligne.
+    Le bouton 📚 ouvre la <b>bibliothèque de descriptions</b> : vos textes habituels, à réutiliser.</li>
+  <li><b>+ Section</b> ajoute un titre (ex. SALLE DE BAINS). Glissez la poignée ⋮⋮ pour changer l'ordre des lignes.</li>
+  <li>Cliquez sur <b>Enregistrer</b> (ou <kbd>Ctrl</kbd>+<kbd>S</kbd>). Le devis reçoit un numéro (ex. D2026-001).</li>
+  <li><b>Aperçu / Imprimer</b> pour imprimer, <b>PDF</b> pour obtenir un fichier à envoyer par email.</li>
+</ol>
+<p>Le menu déroulant permet de noter si le devis est <b>Envoyé</b>, <b>Accepté</b> ou <b>Refusé</b>. Pour un travail semblable à un ancien,
+ouvrez l'ancien devis et cliquez sur <b>Dupliquer</b>.</p>
+
+<h3>Faire la facture</h3>
+<ol>
+  <li>Depuis le devis, cliquez sur <b>Transformer en facture</b>. Une facture <b>brouillon</b> est créée.</li>
+  <li>Vérifiez-la, indiquez l'<b>acompte déjà versé</b> s'il y en a un, modifiez les lignes si les travaux ont changé.</li>
+  <li>Cliquez sur <b>Émettre la facture n°…</b> : elle reçoit son numéro, un PDF est archivé automatiquement, et elle devient <b>définitive</b>.</li>
+  <li>Quand le client a payé, ouvrez la facture et cliquez sur <b>Marquer comme payée</b>. ArtiMan n'enregistre pas les montants ni
+    les moyens de paiement : seulement le statut « payée » ou « à encaisser ».</li>
+</ol>
+<div class="box"><b>Pourquoi une facture émise n'est plus modifiable ?</b> C'est une obligation légale : les factures doivent être numérotées sans trou
+et ne jamais être modifiées après envoi. En cas d'erreur, ouvrez la facture et cliquez sur <b>Créer un avoir</b> (il annule tout ou partie de
+la facture), puis refaites une facture correcte. Une facture sans devis se crée avec <b>Factures → + Facture sans devis</b>.</div>
+
+<h3>Retrouver un document</h3>
+<ul>
+  <li><b>Accueil</b> : factures à encaisser, devis en cours, chiffre d'affaires.</li>
+  <li><b>Clients</b> : la fiche d'un client avec tous ses devis et factures.</li>
+  <li><b>Historique</b> : recherche dans tous les documents, même dans le texte des lignes (ex. « lasure »), et export CSV pour le comptable.</li>
+</ul>
+
+<h2>5. Sauvegardes</h2>
+<p>ArtiMan sauvegarde <b>tout seul</b> : au démarrage, à la fermeture, à chaque facture émise et toutes les 6 heures. Les copies sont dans
+<code>ArtiMan\data\backups</code>.</p>
+<div class="box warn"><b>Important :</b> ces copies sont sur le même ordinateur. Si le disque tombe en panne, elles sont perdues.
+Indiquez une <b>clé USB</b> ou un <b>dossier OneDrive</b> dans <b>Paramètres → Dossier de copie externe</b>. ArtiMan y recopie chaque sauvegarde
+quand la clé est branchée, et affiche un rappel s'il n'a pas pu le faire depuis 7 jours.</div>
+<p>Pour revenir en arrière : <b>Sauvegardes</b> → choisissez une date → <b>Restaurer</b>. L'état actuel est sauvegardé juste avant, rien n'est perdu.</p>
+
+<h2>6. Quitter, changer d'ordinateur</h2>
+<p>Fermez la fenêtre ou cliquez sur <b>Quitter</b> en bas à gauche : une sauvegarde est faite à la fermeture.
+Pour changer d'ordinateur, fermez ArtiMan, copiez <b>tout le dossier <code>ArtiMan</code></b> (avec le sous-dossier <code>data</code>) sur une clé,
+et collez-le sur le nouvel ordinateur. Rien d'autre à installer.</p>
+
+<h2>7. Où sont mes fichiers ?</h2>
+<table>
+  <tr><th>Dossier</th><th>Contenu</th></tr>
+  <tr><td><code>data\artiman.db</code></td><td>La base de données (clients, devis, factures)</td></tr>
+  <tr><td><code>data\documents</code></td><td>Les PDF des devis et factures émis (par année)</td></tr>
+  <tr><td><code>data\backups</code></td><td>Les sauvegardes automatiques</td></tr>
+  <tr><td><code>data\logs</code></td><td>Le journal technique (en cas de problème)</td></tr>
+  <tr><td><code>demo-data</code></td><td>Les données fictives de la démo (peut être supprimé)</td></tr>
+</table>
+
+<h2>8. En cas de problème</h2>
+<table>
+  <tr><th>Problème</th><th>Solution</th></tr>
+  <tr><td>« ArtiMan ne répond plus »</td><td>Fermez la fenêtre et relancez <code>ArtiMan.exe</code>.</td></tr>
+  <tr><td>Rien ne s'ouvre au double-clic</td><td>ArtiMan est peut-être déjà ouvert : regardez la barre des tâches. Sinon, redémarrez l'ordinateur.</td></tr>
+  <tr><td>Les PDF ne se créent pas</td><td>Microsoft Edge doit être installé (il l'est sur tous les Windows 10 et 11). Vous pouvez toujours <b>Imprimer</b> puis choisir « Microsoft Print to PDF ».</td></tr>
+  <tr><td>Message rouge « base endommagée »</td><td>Allez dans <b>Sauvegardes</b> et restaurez la dernière sauvegarde.</td></tr>
+</table>
+
+<h2>9. Mises à jour et aide</h2>
+<p>Les nouvelles versions sont publiées sur <a href="https://github.com/chris-reynier/artiman/releases">github.com/chris-reynier/artiman/releases</a>.
+Pour mettre à jour : fermez ArtiMan, téléchargez le nouveau ZIP et remplacez uniquement <code>ArtiMan.exe</code> dans votre dossier.
+Le dossier <code>data</code> (vos clients, devis et factures) ne change pas.</p>
+<p>Questions et idées : <a href="https://github.com/chris-reynier/artiman/discussions">onglet Discussions</a>.
+Ne publiez jamais de données de vos clients.</p>
+
+<h2>10. À savoir</h2>
+<div class="box warn">
+  <p><b>ArtiMan est gratuit et fourni sans garantie</b> (licence MIT, voir <code>LICENCE.txt</code>). Vous restez responsable de vos documents
+  commerciaux : faites vérifier vos mentions légales (assurance, pénalités, TVA) par votre comptable.</p>
+  <p><b>Facturation électronique :</b> à partir de septembre 2027, les factures entre professionnels devront être émises au format électronique
+  via une plateforme agréée. ArtiMan convient aujourd'hui aux factures pour les particuliers ; l'export Factur-X est prévu avant cette échéance.</p>
+</div>
+</main>
+</body>
+</html>

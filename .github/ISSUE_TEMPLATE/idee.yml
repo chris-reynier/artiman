@@ -1,0 +1,16 @@
+name: Proposer une idée
+description: Une fonction qui vous manque pour votre activité
+labels: [idée]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: De quoi avez-vous besoin ?
+      description: Décrivez la situation de votre métier où ArtiMan ne vous aide pas encore.
+    validations:
+      required: true
+  - type: input
+    id: trade
+    attributes:
+      label: Votre métier
+      placeholder: ex. peintre, plombier, électricien, menuisier…

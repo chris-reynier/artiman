@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>{{.Heading}} – {{.Party.Short}}</title>
+<style>
+@page {
+  size: A4;
+  margin: 12mm 13mm 18mm 13mm;
+  @bottom-center { content: "{{.Footer}}"; font: 7pt Verdana, sans-serif; color: #555; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 7pt Verdana, sans-serif; color: #555; }
+}
+* { box-sizing: border-box; }
+html { background: #fff; }
+body { margin: 0; font: 9pt/1.35 Verdana, Geneva, sans-serif; color: #111; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 100%; }
+.head { display: flex; justify-content: space-between; align-items: flex-start; }
+.logo { width: 78mm; height: auto; }
+.brand-text { font-size: 8.5pt; line-height: 1.5; color: #333; }
+.brand-name { font-size: 18pt; font-weight: bold; color: #1c5cab; margin-bottom: 1mm; }
+.placedate { margin-top: 4mm; font-size: 9pt; }
+.parties { display: flex; justify-content: space-between; margin-top: 4mm; }
+.company { font-size: 8.5pt; line-height: 1.4; }
+.customer { width: 80mm; margin-right: 6mm; margin-top: 2mm; font-size: 9.5pt; line-height: 1.45; }
+.customer .name { font-weight: bold; }
+h1 { font-size: 13pt; margin: 9mm 0 1mm; text-align: center; letter-spacing: .02em; }
+.ref { text-align: center; font-size: 8.5pt; color: #333; margin-bottom: 3mm; }
+.object { margin: 2mm 0 3mm; font-size: 9pt; }
+.object b { font-weight: bold; }
+table.lines { width: 100%; border-collapse: collapse; margin-top: 2mm; }
+table.lines thead { display: table-header-group; }
+table.lines th { background: #e9e9e9; border: 0.3mm solid #999; font-size: 8pt; padding: 1.6mm 2mm; text-align: center; }
+table.lines td { border-left: 0.3mm solid #999; border-right: 0.3mm solid #999; padding: 1.2mm 2mm; vertical-align: top; }
+table.lines tbody tr:last-child td { border-bottom: 0.3mm solid #999; }
+table.lines tr { break-inside: avoid; }
+td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td.c { text-align: center; white-space: nowrap; }
+.item-label { font-weight: bold; text-transform: uppercase; }
+.item-desc { font-size: 8.2pt; color: #333; margin-top: .6mm; white-space: pre-line; }
+tr.section td { font-weight: bold; text-decoration: underline; text-transform: uppercase; padding-top: 3mm; }
+tr.text td { font-size: 8.2pt; white-space: pre-line; }
+.after { display: flex; justify-content: space-between; gap: 6mm; margin-top: 4mm; break-inside: avoid; }
+.left { flex: 1; font-size: 8.5pt; }
+.sign { margin-top: 3mm; border: 0.3mm solid #999; padding: 2mm; min-height: 22mm; width: 75mm; }
+.totals { border-collapse: collapse; min-width: 72mm; font-size: 9pt; }
+.totals td { padding: 1mm 2.5mm; border: 0.3mm solid #999; }
+.totals td.v { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.totals tr.strong td { font-weight: bold; background: #f1f1f1; }
+.terms { margin-top: 3mm; font-size: 8.5pt; }
+.mentions { margin-top: 5mm; font-size: 7pt; color: #444; line-height: 1.35; break-inside: avoid; }
+.banner { border: 0.4mm dashed #b26b00; color: #7a4b00; background: #fff6e5; padding: 2mm 3mm; font-size: 8pt; margin-bottom: 3mm; }
+.draft-mark { position: fixed; top: 40%; left: 0; right: 0; text-align: center; font-size: 60pt; color: rgba(200, 0, 0, .10);
+  transform: rotate(-25deg); pointer-events: none; font-weight: bold; }
+@media screen {
+  html { background: #8a8a8a; }
+  body { padding: 16px 0; }
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; padding: 12mm 13mm 18mm; box-shadow: 0 2px 12px rgba(0,0,0,.35); }
+  .screen-footer { margin-top: 8mm; font-size: 7pt; color: #555; text-align: center; border-top: 0.2mm solid #ccc; padding-top: 2mm; }
+}
+@media print { .screen-footer { display: none; } }
+</style>
+</head>
+<body>
+{{if .Draft}}<div class="draft-mark">BROUILLON</div>{{end}}
+<div class="page">
+  {{if .LegacyNote}}<div class="banner">{{.LegacyNote}}</div>{{end}}
+  <div class="head">
+    {{if .LogoURL}}<img class="logo" src="{{.LogoURL}}" alt="{{.Company.Name}}">
+    {{else}}<div class="brand-text"><div class="brand-name">{{.Company.Name}}</div>{{range .Company.Trades}}<div>{{.}}</div>{{end}}</div>{{end}}
+    <div class="placedate">{{.PlaceDate}}</div>
+  </div>
+  <div class="parties">
+    <div class="company">
+      {{range .Company.Address}}{{.}}<br>{{end}}
+      <br>
+      {{range .Company.Phones}}Tel. {{.}}<br>{{end}}
+      {{if .Company.Email}}{{.Company.Email}}<br>{{end}}
+    </div>
+    <div class="customer">
+      <div class="name">{{.Party.Display}}</div>
+      {{range .Party.Address}}{{.}}<br>{{end}}
+      {{.Party.Zip}} {{.Party.City}}
+    </div>
+  </div>
+
+  <h1>{{.Heading}}</h1>
+  {{if .Reference}}<div class="ref">{{if eq .Kind "devis"}}Devis n° {{end}}{{.Reference}}</div>{{end}}
+  {{if or .Title .Site}}<div class="object">
+    {{if .Title}}<div><b>Objet :</b> {{.Title}}</div>{{end}}
+    {{if .Site}}<div><b>Chantier :</b> {{.Site}}</div>{{end}}
+  </div>{{end}}
+
+  <table class="lines">
+    <colgroup><col style="width:58%"><col style="width:13%"><col style="width:13%"><col style="width:16%"></colgroup>
+    <thead><tr><th>DESCRIPTION</th><th>QUANTITE</th><th>P.U HT</th><th>TOTAL HT</th></tr></thead>
+    <tbody>
+    {{range .Lines}}
+      {{if eq .Kind "section"}}<tr class="section"><td colspan="4">{{.Label}}{{if .Description}}<div class="item-desc">{{.Description}}</div>{{end}}</td></tr>
+      {{else if eq .Kind "text"}}<tr class="text"><td>{{if .Label}}{{.Label}}{{end}}{{if .Description}}{{if .Label}}<br>{{end}}{{.Description}}{{end}}</td><td></td><td></td><td></td></tr>
+      {{else}}<tr>
+        <td><div class="item-label">{{.Label}}</div>{{if .Description}}<div class="item-desc">{{.Description}}</div>{{end}}</td>
+        <td class="c">{{.Qty}} {{.Unit}}</td>
+        <td class="num">{{.PU}}</td>
+        <td class="num">{{.Total}}</td>
+      </tr>{{end}}
+    {{end}}
+    </tbody>
+  </table>
+
+  <div class="after">
+    <div class="left">
+      {{if eq .Kind "devis"}}
+        {{if .ValidUntil}}<div>Date de validité : {{.ValidUntil}}</div>{{end}}
+        {{range .Deposit}}<div>{{.}}</div>{{end}}
+        {{if .ShowSign}}<div class="sign">Dater et signer « Bon pour accord »</div>{{end}}
+      {{else}}
+        {{if .DueDate}}<div><b>Date d'échéance : {{.DueDate}}</b></div>{{end}}
+        {{if .Terms}}<div class="terms">{{.Terms}}</div>{{end}}
+      {{end}}
+      {{if .ReverseNote}}<div class="terms" style="white-space:pre-line"><b>{{.ReverseNote}}</b></div>{{end}}
+    </div>
+    <table class="totals">
+      {{range .Totals}}<tr{{if .Strong}} class="strong"{{end}}><td>{{.Label}}</td><td class="v">{{.Value}}</td></tr>{{end}}
+    </table>
+  </div>
+
+  {{if .Mentions}}<div class="mentions">{{range .Mentions}}<div>{{.}}</div>{{end}}</div>{{end}}
+  <div class="screen-footer">{{.Footer}}</div>
+</div>
+{{if .Preview}}<script>
+  // Fit the A4 page to the preview frame width (screen only; printing is unaffected).
+  function fit() {
+    const page = document.querySelector(".page");
+    const z = Math.min(1, (window.innerWidth - 24) / page.offsetWidth);
+    document.body.style.zoom = z;
+  }
+  window.addEventListener("resize", fit);
+  window.addEventListener("beforeprint", () => (document.body.style.zoom = 1));
+  window.addEventListener("afterprint", fit);
+  fit();
+</script>{{end}}
+</body>
+</html>

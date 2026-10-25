@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArtiMan</title>
+<link rel="icon" href="/img/icon.png">
+<link rel="stylesheet" href="/css/app.css">
+<script>window.ARTIMAN = { token: "{{TOKEN}}", version: "{{VERSION}}" };</script>
+</head>
+<body>
+<div id="layout">
+  <aside id="sidebar">
+    <a class="brand" href="#/"><img src="/img/icon.png" alt=""><span>ArtiMan</span></a>
+    <nav id="nav">
+      <a href="#/" data-nav="home">Accueil</a>
+      <a href="#/clients" data-nav="clients">Clients</a>
+      <a href="#/devis" data-nav="devis">Devis</a>
+      <a href="#/factures" data-nav="factures">Factures</a>
+      <a href="#/historique" data-nav="historique">Historique</a>
+      <div class="nav-sep"></div>
+      <a href="#/parametres" data-nav="parametres">Paramètres</a>
+      <a href="#/sauvegardes" data-nav="sauvegardes">Sauvegardes <span id="backupDot" class="dot hidden"></span></a>
+    </nav>
+    <div class="side-actions">
+      <a class="btn primary block" href="#/devis/nouveau">+ Nouveau devis</a>
+      <button class="btn block" id="quitBtn" type="button">Quitter</button>
+      <div class="version">v{{VERSION}}</div>
+    </div>
+  </aside>
+  <main id="main"><div class="loading">Chargement…</div></main>
+</div>
+<div id="toasts"></div>
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

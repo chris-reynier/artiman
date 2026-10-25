@@ -1,0 +1,37 @@
+name: Signaler un problème
+description: Quelque chose ne fonctionne pas comme prévu
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de prendre le temps de signaler le problème.
+        **N'envoyez jamais de données de vos clients** (noms, adresses, factures) : utilisez si possible le mode démo.
+  - type: textarea
+    id: what
+    attributes:
+      label: Que s'est-il passé ?
+      description: Ce que vous faisiez, ce que vous attendiez, ce qui s'est produit.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Comment reproduire le problème ?
+      placeholder: "1. Ouvrir un devis\n2. Cliquer sur…\n3. …"
+  - type: input
+    id: version
+    attributes:
+      label: Version d'ArtiMan
+      description: Elle est affichée en bas du menu de gauche (ex. v1.0.0).
+  - type: dropdown
+    id: windows
+    attributes:
+      label: Windows
+      options: ["Windows 11", "Windows 10 (64 bits)", "Windows 10 (32 bits)", "Je ne sais pas"]
+  - type: textarea
+    id: log
+    attributes:
+      label: Journal (facultatif)
+      description: Les dernières lignes du fichier data\logs\artiman.log, en retirant toute information personnelle.
+      render: text

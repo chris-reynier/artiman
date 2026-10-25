@@ -1,0 +1,8 @@
+dist/
+devdata/
+data/
+*.exe
+*.syso
+private/
+demo-data/
+docs/marketing/

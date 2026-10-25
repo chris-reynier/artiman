@@ -1,0 +1,32 @@
+name: Release
+
+# Push a tag such as v1.0.0 to build the ZIP and attach it to a GitHub release.
+# The build never includes private data: no -PrivateDir is passed.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Build ZIP
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart("v")
+          .\tools\build.ps1 -Version $version
+          Get-FileHash "dist\ArtiMan-$version.zip" -Algorithm SHA256 | ForEach-Object { "$($_.Hash)  ArtiMan-$version.zip" } |
+            Set-Content "dist\ArtiMan-$version.zip.sha256" -Encoding ascii
+      - uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            dist/ArtiMan-*.zip
+            dist/ArtiMan-*.zip.sha256
